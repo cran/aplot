@@ -1,0 +1,11 @@
+d84d6b8b94f5b7ac8e7a6e4d5fc10efa *DESCRIPTION
+950c8296eb23a491eb727944a8f1e582 *NAMESPACE
+96d7a17ee54d6db1150be6854ec1c16b *R/aplot.R
+e68dcb9718c18506312a46d95cbbd345 *R/axis.R
+7d9526e0da35a397d697cff5af30f8d9 *R/insertion.R
+75b7b875c6f56b3ce4e8ad96f1373299 *R/re-export.R
+bec233bf94d4dbfc18b8a62d05ec873f *R/utilities.R
+8fa5b4347f86426f2ef50a8189c1ddf8 *inst/extdata/scRNA_dotplot_data.tsv.gz
+5cf9ef52a9699694487e66f4fc14c8c2 *man/align_axis.Rd
+4076502b32e677804623f7d2fd41ff0b *man/plot-insertion.Rd
+0ed47bdb0238100ebd30bb68b954059b *man/reexports.Rd
