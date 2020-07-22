@@ -63,7 +63,12 @@ xrange <- function(gg) {
 ##' @importFrom ggplot2 layer_scales
 ##' @importFrom ggplot2 ggplot_build
 ggrange <- function(gg, var) {
-    res <- layer_scales(gg)[[var]]$range$range
+    ## https://github.com/YuLab-SMU/aplot/pull/3
+    ## res <- layer_scales(gg)[[var]]$range$range 
+    res <- layer_scales(gg)[[var]]$limits
+    if (is.null(res)) {
+        res <- layer_scales(gg)[[var]]$range$range 
+    }
     if (is.character(res)) return(res)
 
     var <- paste0(var, ".range")
