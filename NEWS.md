@@ -1,3 +1,23 @@
+# TODO
+
++ remove `add_facet` and import it from `ggfun`.
+
+
+
+# aplot 0.1.0
+
++ add `byrow`, `guides` and `design` parameter in `plot_list`  (2021-09-03, Fri)
++ mv some internal code to `ggfun::add_facet()`
+
+# aplot 0.0.9
+
++ bug fixed for `plot_list` with `patchwork` object (2021-09-03, Fri)
++ `plot_list` supports named plots as input and uses the names as facet labels of the plots  
+
+# aplot 0.0.8
+
++ update `...`, `tag_levels` and `tag_size` parameters in `plot_list` (2021-09-02, Thu)
+
 # aplot 0.0.7
 
 + suggest `ggfun` (2021-08-27, Mon)
