@@ -1,13 +1,17 @@
-# TODO
 
-+ remove `add_facet` and import it from `ggfun`.
+# aplot 0.1.1
 
-
++ add `labels` parameter in `plot_list` (2021-09-19, Sun)
++ `plot_list` use `ggfun::facet_set()` to use facet label to label subplots (2021-09-17, Fri)
++ `options(aplot_guides = "keep")` to set whether collecting guides (2021-09-16, Thu)
+  - <https://github.com/YuLab-SMU/aplot/issues/6#issuecomment-920606540>
++ mv `ggbreak2ggplot`, `is.ggbreak` and `is.ggtree` to the ggfun package and import ggfun
++ `plot_list` now compatible with `ggbreak` object (2021-09-07, Tue)
++ `print(aplot)` will draw the figure and return a `patchwork` object (2021-09-03, Fri; #6)
 
 # aplot 0.1.0
 
 + add `byrow`, `guides` and `design` parameter in `plot_list`  (2021-09-03, Fri)
-+ mv some internal code to `ggfun::add_facet()`
 
 # aplot 0.0.9
 

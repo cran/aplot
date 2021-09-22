@@ -10,7 +10,8 @@
 ##' @param widths relative widths
 ##' @param heights relative heights
 ##' @param guides A string specifying how guides should be treated in the layout.
-##' @param tag_levels format to label plots
+##' @param labels manual specified labels to label plots
+##' @param tag_levels format to label plots, will be disable if 'labels' is not NULL
 ##' @param tag_size size of tags
 ##' @param design specification of the location of areas in the layout
 ##' @return composite plot
@@ -18,30 +19,59 @@
 ##' @importFrom patchwork plot_annotation
 ##' @importFrom ggplotify as.ggplot
 ##' @importFrom ggplot2 theme
+##' @importFrom ggplot2 labs
 ##' @importFrom utils modifyList
+##' @importFrom ggfun ggbreak2ggplot
 ##' @export
 ##' @author Guangchuang Yu
 plot_list <- function(..., gglist = NULL,
-                      ncol = NULL, nrow = NULL, byrow = NULL,
-                      widths = NULL, heights = NULL,
+                      ncol = NULL, 
+                      nrow = NULL, 
+                      byrow = NULL,
+                      widths = NULL, 
+                      heights = NULL,
                       guides = NULL,
+                      labels = NULL,        
                       tag_levels = NULL,
                       tag_size = 14,
                       design = NULL) {
 
     gglist <- c(list(...), gglist)
     name <- names(gglist)
-
-    for (i in seq_along(gglist)) {
-        if (!inherits(gglist[[i]], 'gg') || inherits(gglist[[i]], 'patchwork')) {
-            gglist[[i]] <- ggplotify::as.ggplot(gglist[[i]])
-        }
-        if (!is.null(name)) {
-            gglist[[i]] <- add_facet(gglist[[i]], name[i])
+    
+    if (!all_ggplot(gglist)) {
+        for (i in seq_along(gglist)) {
+            if (is.ggbreak(gglist[[i]])) {
+                gglist[[i]] <- ggbreak2ggplot(gglist[[i]])
+            } else {
+                gglist[[i]] <- ggplotify::as.ggplot(gglist[[i]])
+            }
+            
         }
     }
+    
+    if (!is.null(name)) {
+        for (i in seq_along(gglist)) {
+            if (name[i] != "") {
+                if (inherits(gglist[[i]], 'patchwork')) {
+                    gglist[[i]] <- ggplotify::as.ggplot(gglist[[i]])
+                }
 
-    p <- Reduce(`+`, gglist) +
+                gglist[[i]] <- gglist[[i]] + ggfun::facet_set(label = name[i])                
+            }
+        }
+    }
+    
+    if (!is.null(labels)) {
+        tag_levels <- NULL
+        n <- min(length(labels), length(gglist))
+        for (i in seq_len(n)) {
+            if (labels[i] == "") next
+            gglist[[i]] <- gglist[[i]] + labs(tag = labels[i])
+        }
+    }
+    
+    p <- Reduce(`+`, gglist, init=plot_filler()) +
         plot_layout(ncol = ncol,
                     nrow = nrow,
                     byrow = byrow,
@@ -51,40 +81,32 @@ plot_list <- function(..., gglist = NULL,
                     design = design
                     )
 
-    if (!is.null(tag_levels)) {
-        pt <- modifyList(p$theme$plot.tag, list(size = tag_size))
+    if (!is.null(tag_levels) || !is.null(labels)) {
+        pt <- p$theme$plot.tag
+        if (is.null(pt)) pt <- list()
+        pt <- modifyList(pt, list(size = tag_size))
         p <- p + plot_annotation(tag_levels=tag_levels) &
             theme(plot.tag = pt)
     }
     return(p)
 }
 
-
-##' @importFrom ggplot2 theme
-##' @importFrom ggplot2 margin
-##' @importFrom ggplot2 element_rect
-##' @importFrom ggplot2 element_text
-##' @importFrom ggplot2 rel
-##' @importFrom ggplot2 facet_grid
-add_facet <- function(plot, label, side = 't', angle = NULL) {
-    side <- match.arg(side, c('t', 'r'))
-    lb <- paste0("'", eval(label), "'")
-    if (side == 't') {
-        lb <- paste0('~', lb)
-    } else {
-        lb <- paste0(lb, '~.')
-        if (is.null(angle))  angle <- -90
+##' @importFrom ggplot2 is.ggplot
+##' @importFrom ggfun is.ggbreak
+all_ggplot <- function(gglist) {
+    for (i in seq_along(gglist)) {
+        if (!is.ggplot(gglist[[i]])) {
+            return(FALSE)
+        #} else if (inherits(gglist[[i]], 'patchwork')) {
+        #    return(FALSE)
+        } else if (is.ggbreak(gglist[[i]])) {
+            return(FALSE)
+        }
     }
-
-    plot + facet_grid(eval(parse(text=lb))) +
-        theme(strip.background = element_rect(fill='grey85', colour = NA),
-              strip.text = element_text(colour = 'grey10',
-                                        size = rel(0.8),
-                                        angle = angle,
-                                        margin = margin(4.4, 4.4, 4.4, 4.4))
-              )
+    return(TRUE)
 }
 
 
 
+plot_filler <- yulab.utils::get_fun_from_pkg("patchwork", "plot_filler")
 
