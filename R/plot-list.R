@@ -37,10 +37,10 @@ plot_list <- function(..., gglist = NULL,
                       tag_levels = NULL,
                       tag_size = 14,
                       design = NULL, 
-                      output = "gglist") {
+                      output = "patchwork") {
     
     output <- match.arg(output, c("gglist", "patchwork"))
-    
+
     gglist <- c(list(...), gglist)
     name <- names(gglist)
     
@@ -92,10 +92,7 @@ plot_list <- function(..., gglist = NULL,
 }
 
 
-as.patchwork <- function(x) {
-    y = c(list(gglist=x), attr(x, 'params'))
-    do.call(plot_list2, y)
-}
+
 
 plot_list2 <- function(gglist = NULL,
                       ncol = NULL, 
@@ -171,6 +168,6 @@ gglist <- function(gglist, ...) {
 ##' @method print gglist
 ##' @export
 print.gglist <- function(x, ...) {
-    as.patchwork(x)
+    print(as.patchwork(x))
 }
 
