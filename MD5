@@ -1,7 +1,7 @@
-da5c8e8375f641f57c297aaf2fdf1341 *DESCRIPTION
+583bc285e09d66fbc2cfe2417aca91f9 *DESCRIPTION
 9823a50be75adcf483086492efa3b61b *NAMESPACE
-0c20d09665d63628729d712ee366e235 *NEWS.md
-834b2e89e6490b24cc92601daa4958c6 *R/aplot.R
+6a55d204784496027d008a7d75362557 *NEWS.md
+4bbeed250fbcca32256bd5fb42318b12 *R/aplot.R
 2d7e0687e0dee7b9cafa09d2bf65d39d *R/axis.R
 7a0a003977d0b67b87679ce272a8fd39 *R/insertion.R
 2f833cc80c307b500838f61875d14d3b *R/method-accessor.R
@@ -10,7 +10,7 @@ f9bfe845855b2bcff27b8fc811a514a9 *R/re-export.R
 80fd1c03f447ff6dd80585df1acae338 *R/utilities.R
 8fa5b4347f86426f2ef50a8189c1ddf8 *inst/extdata/scRNA_dotplot_data.tsv.gz
 5cf9ef52a9699694487e66f4fc14c8c2 *man/align_axis.Rd
-810ab8defa27db489c224e740c624334 *man/as.patchwork.Rd
+a06b294319a93f217781ef18715e2ca7 *man/as.patchwork.Rd
 46bf68fdd651129c0b2474c078c2da20 *man/gglist.Rd
 0caa39cb366ab30a760e400ae40d1b27 *man/plot-insertion.Rd
 5f33b51427dd5b2c5fabe05ba80b5413 *man/plot_list.Rd
