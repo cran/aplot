@@ -75,8 +75,24 @@ as.patchwork <- function(x,
     idx[is.na(idx)] <- x$n + 1 
     x$plotlist[[x$n+1]] <- ggplot() + theme_void() # plot_spacer()
     plotlist <- x$plotlist[idx]
-    
-    pp <- plotlist[[1]] + theme_no_margin()
+    space <- getOption(x="space.between.plots", default=0)
+    # check space, either 'asis' or numeric value
+    if (!inherits(space, c("character", "numeric"))) {
+        stop("'space.between.plots' should be a numeric value or 'asis'.")
+    }
+    if (inherits(space, 'character')) {
+        if (space == "asis") {
+            theme_margin <- theme() # do nothing
+        } else {
+            stop("invalid 'space.between.plots' setting.")
+        }
+    } else {
+        theme_margin <- theme_no_margin()
+        if (space != 0) {
+            theme_margin$plot.margin <- do.call(ggplot2::margin, c(rep(list(space), 4), unit='mm'))
+        } 
+    }
+    pp <- plotlist[[1]] + theme_margin
     for (i in 2:length(plotlist)) {
         pp <- pp + (plotlist[[i]] + theme_no_margin())
     }
@@ -98,6 +114,13 @@ aplotGrob <- function(x) {
     patchworkGrob(res)
 }
 
+oncoplotGrob <- function(x) {
+    guides <- getOption('aplot_guides', default="collect")
+    on.exit(options(aplot_guides = guides))
+    options(aplot_guides = "keep")
+    aplotGrob(x)
+}
+
 ##' @importFrom grid grid.draw
 ##' @method grid.draw aplot
 ##' @export
@@ -105,3 +128,11 @@ grid.draw.aplot <- function(x, recording = TRUE) {
     grid::grid.draw(as.patchwork(x))
 }
 
+##' @method grid.draw oncoplot
+##' @export
+grid.draw.oncoplot <- function(x, recording = TRUE) {
+    guides <- getOption('aplot_guides', default="collect")
+    on.exit(options(aplot_guides = guides))
+    options(aplot_guides = "keep")
+    grid.draw.aplot(x)
+}

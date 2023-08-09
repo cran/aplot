@@ -171,3 +171,44 @@ print.gglist <- function(x, ...) {
     print(as.patchwork(x))
 }
 
+##' @method <= gglist
+##' @export
+"<=.gglist" <- function(e1, e2) {
+    ggadd(e1, e2)
+}
+
+
+ggadd <- function(gg, ...) {
+    if (!inherits(gg, c("gglist", "gg", "ggproto"))) {
+        stop("'gg' should be an object of 'gglist', 'gg' or 'ggproto'.")
+    }
+    
+    opts <- list(...)
+
+    if (is(gg, 'ggproto')) return(c(list(gg), opts))
+
+    if (is(gg, 'gg')) return(gg + opts)
+
+    structure(
+        lapply(gg, function(x) x + opts),
+        class = class(gg)
+    )
+}
+
+
+##' @method grid.draw gglist
+##' @export
+grid.draw.gglist <- function(x, recording = TRUE){
+    grid::grid.draw(as.patchwork(x))
+}
+
+##' This function converts 'gglist' object to grob (i.e. gtable object)
+##'
+##'
+##' title gglistGrob
+##' @param x A 'gglist' object
+##' @return A 'gtable' object
+##' @export
+gglistGrob <- function(x) {
+    patchwork::patchworkGrob(as.patchwork(x))
+}

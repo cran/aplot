@@ -12,14 +12,10 @@ get_taxa_order <- function (tree_view) {
 }
 
 
-theme_no_margin <- function(...) {
-    ggplot2::theme(plot.margin = ggplot2::margin(), ...)
-}
+theme_no_margin <- getFromNamespace("theme_no_margin", "ggfun")
 
 
 is.coord_flip <- function(p) {
     inherits(p, "gg") && inherits(p$coordinates, "CoordFlip")
 }
-
-
 
