@@ -92,6 +92,11 @@ as.patchwork <- function(x,
             theme_margin$plot.margin <- do.call(ggplot2::margin, c(rep(list(space), 4), unit='mm'))
         } 
     }
+
+    idx <- vapply(plotlist, function(p) inherits(p, 'enrichplotDot'), FUN.VALUE=logical(1))
+    if (any(idx)) {
+        plotlist[idx] <- lapply(plotlist[idx], ggfun::set_point_legend_shape)
+    }
     pp <- plotlist[[1]] + theme_margin
     for (i in 2:length(plotlist)) {
         pp <- pp + (plotlist[[i]] + theme_no_margin())

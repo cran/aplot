@@ -1,3 +1,7 @@
+# aplot 0.2.1
+
++ compatible with 'enrichplotDot' object in 'enrichplot' v >= 1.20.2 to override point shape legend supported in 'ggfun' v >= 0.1.3 (2023-09-15, Fri)
+
 # aplot 0.2.0
 
 + control space between subplots (2023-07-15, Sat, #31)
