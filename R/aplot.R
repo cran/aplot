@@ -93,10 +93,8 @@ as.patchwork <- function(x,
         } 
     }
 
-    idx <- vapply(plotlist, function(p) inherits(p, 'enrichplotDot'), FUN.VALUE=logical(1))
-    if (any(idx)) {
-        plotlist[idx] <- lapply(plotlist[idx], ggfun::set_point_legend_shape)
-    }
+    plotlist <- .process_plotlist(plotlist)
+
     pp <- plotlist[[1]] + theme_margin
     for (i in 2:length(plotlist)) {
         pp <- pp + (plotlist[[i]] + theme_no_margin())

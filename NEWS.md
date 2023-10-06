@@ -1,3 +1,8 @@
+# aplot 0.2.2
+
++ bug fixed in plot expand adjustment (2023-10-06, Fri, #36)
++ introduce `.process_plotlist()` for internally process plotlist (2023-09-16, Sat)
+
 # aplot 0.2.1
 
 + compatible with 'enrichplotDot' object in 'enrichplot' v >= 1.20.2 to override point shape legend supported in 'ggfun' v >= 0.1.3 (2023-09-15, Fri)
