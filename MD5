@@ -1,6 +1,6 @@
-fc6e0c196e0ce41d12c633ba967aa8a0 *DESCRIPTION
+972a5fa7baf093864480b33d10eb4b51 *DESCRIPTION
 14ef9def580a8685c633dd9b6ffa0407 *NAMESPACE
-6ee78dc5322a3ff55bd549600eedbbec *NEWS.md
+c0810c671a2d63ab974a6c4099d28bd2 *NEWS.md
 da7bac5323d313dfbcdb38f8fbf613f0 *R/aplot-package.R
 05fc049cd4b5830327eccd5821916aa9 *R/aplot.R
 7ddbac708524c5899fb237fa190118c1 *R/axis.R
@@ -9,13 +9,14 @@ df343eb12f0c8ba48b8a25754dda0f78 *R/method-accessor.R
 c7488d3e5e2646aaebab0ef1e8c8a82e *R/plot-list.R
 375002abb09b4e87065aedc9b46c66e8 *R/re-export.R
 8f9580d183c31211362b507afd25d0b2 *R/utilities.R
+1dda19015f0aa969acee990c150e3ac9 *build/partial.rdb
 8fa5b4347f86426f2ef50a8189c1ddf8 *inst/extdata/scRNA_dotplot_data.tsv.gz
 df3513e5c98c6510ab9dc217a9b7a799 *man/align_axis.Rd
-60721d3abd373d1005e2ab84cfd000ca *man/aplot-package.Rd
-632c0be8b4e8472d4a40fbbc6ab646fb *man/aplot_label.Rd
+09098e54396ace4744f6e81752cedae1 *man/aplot-package.Rd
+8d9add077823b1f82e2718d0ad923cfe *man/aplot_label.Rd
 4dbd95e2b150c177b3930b7de99e187f *man/as.patchwork.Rd
 4e62c45bc82f6e7d9c07e8907470f0b4 *man/gglist.Rd
-f3d1189a13f854eb006b2489ea82fe24 *man/gglistGrob.Rd
+8f8ffe2b24e44734effc1f30311970c5 *man/gglistGrob.Rd
 8e88c1895f0e2abd2728c7aae4fdd211 *man/plot-insertion.Rd
 cffa0d1dae153ada66def84f2bfbb8e2 *man/plot_list.Rd
 e94533ceadeae59dfc31fb6092007d3b *man/reexports.Rd
