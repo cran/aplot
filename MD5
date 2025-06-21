@@ -1,9 +1,9 @@
-33b15bc9b17e4df05870814c71ec9f72 *DESCRIPTION
+2af39ae35d772c7c83c3c0875b660e45 *DESCRIPTION
 5a6881835cfef42eff287874f3a0f373 *NAMESPACE
-d71020ff4e5dd367ec4e8a3b07dbef14 *NEWS.md
+68ca0bfd1b08e95cbd7a5b893e3b0de4 *NEWS.md
 da7bac5323d313dfbcdb38f8fbf613f0 *R/aplot-package.R
 a6510346f2ad8345de7ae3937ebcd0b1 *R/aplot.R
-7ddbac708524c5899fb237fa190118c1 *R/axis.R
+037fe3ee5a6b98e754ce8bc68c3ecc61 *R/axis.R
 fd5f50909b02822c876d6b523e55870c *R/insertion.R
 5bc674ea037709375656f90fd4d53da8 *R/method-accessor.R
 c7488d3e5e2646aaebab0ef1e8c8a82e *R/plot-list.R
@@ -16,6 +16,7 @@ df3513e5c98c6510ab9dc217a9b7a799 *man/align_axis.Rd
 09098e54396ace4744f6e81752cedae1 *man/aplot-package.Rd
 8d9add077823b1f82e2718d0ad923cfe *man/aplot_label.Rd
 4dbd95e2b150c177b3930b7de99e187f *man/as.patchwork.Rd
+766ce07b21429308439bfcdecbca8624 *man/figures/aplot_logo.png
 4e62c45bc82f6e7d9c07e8907470f0b4 *man/gglist.Rd
 8f8ffe2b24e44734effc1f30311970c5 *man/gglistGrob.Rd
 8e88c1895f0e2abd2728c7aae4fdd211 *man/plot-insertion.Rd
